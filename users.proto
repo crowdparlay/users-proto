@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package users;
+
+import "google/protobuf/wrappers.proto";
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message User {
+  string id = 1;
+  string username = 2;
+  string displayName = 3;
+  google.protobuf.StringValue avatarUrl = 4;
+}
+
+service UsersService {
+  rpc getUser(GetUserRequest) returns (User);
+}

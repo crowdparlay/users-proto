@@ -1,1 +1,1 @@
-# gRPC schema for CrowdParlays *users* microservice
+# gRPC schema for Crowd Parlay's *users* microservice

@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option csharp_namespace = "CrowdParlay.Users.gRPC";
+
 package users;
 
 import "google/protobuf/wrappers.proto";
@@ -8,13 +10,18 @@ message GetUserRequest {
   string id = 1;
 }
 
+message GetUsersRequest {
+  repeated string ids = 1;
+}
+
 message User {
   string id = 1;
   string username = 2;
   string displayName = 3;
-  google.protobuf.StringValue avatarUrl = 4;
+  optional google.protobuf.StringValue avatarUrl = 4;
 }
 
 service UsersService {
-  rpc getUser(GetUserRequest) returns (User);
+  rpc GetUser(GetUserRequest) returns (User);
+  rpc GetUsers(GetUsersRequest) returns (stream User);
 }
